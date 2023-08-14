@@ -1,0 +1,65 @@
+---
+title: "A brief overview of the three PGT statistics modules"
+format: html
+---
+
+The names of the modules reflect the approach taken and topics covered. There is no difference in the quality of the education they provide. Our aim is to provide the best education to all students, whilst at the same time matching it to your needs, interests, and abilities. All modules are supported by openly available materials and a mix of pre-recorded lectures, live Q&A sessions, and practical lab classes.
+
+### Fundamental module
+
+The fundamental module is suitable for students without or with only limited prior statistics experience. It covers in an intuitive manner the most widely-used analyses in psychology and language sciences, such as linear regression and analysis-of-variance (ANOVA). The focus is on conceptual understanding and statistical literacy over technical details. Experience in applying the analyses is provided in practical sessions, where students are guided on using modern statistical software with a point-and-click interface (JAMOVI). JAMOVI is free and open-source statistical software, which like software such as SPSS, aims to make statistical analyses straightforward to apply for a general audience.
+
+Teaching consists of pre-recorded video lectures, a weekly live Q&A session, and a weekly practical class. Assessment for the module consists of a single piece of coursework where you are asked to report the results of statistical analysis of a provided dataset. 
+
+Topics covered in each week are:
+
+1. Intro to the General Linear Model (Regression) & Correlation
+2. Multiple Regression
+3. Categorical Regression
+4. Mixed continuous-categorical Regression
+5. Mediation and moderation
+6. Null Hypothesis Significance Testing and the Replication Crisis
+7. Repeated Measures and mixed 'Between-Within' designs
+8. Binary Logistic Regression
+9. Bayes and the p value
+10. Power and Confidence Intervals
+
+### Intermediate module
+
+The Intermediate module is suitable for students without prior statistics experience, or students with some prior statistics experience who want or need to learn to use the `R` statistical programming language. The Intermediate module covers similar topics as the Fundamental module (e.g. regression and ANOVA), with a focus on the technical aspects of applying these techniques with `R`. `R` is a widely used programming language for data science, and a sought-after skill in many professions with a data-analytic component. `R` is a programming environment that benefits from a large amount of add-on packages that enable a wealth of more advanced analyses. The Intermediate module will mainly focus on the use of the `tidyverse` and `afex` packages. 
+
+Using `R` effectively requires writing writing scripts, rather than selecting options in a menu as in point-and-click software such as JAMOVI. The Intermediate module provides a relatively gentle introduction to `R` programming, but because of the additional time spent on learning `R`, you will have to grasp statical concepts more quickly than in the Fundamental module. As such, the learning curve can be considered steeper than in the Fundamental module. A main consideration for switching to the Intermediate module is whether you are interested in learning to program in `R`.
+
+Teaching consists of pre-recorded video lectures, a weekly live Q&A session, and a weekly practical class. Assessment for the module consists of a single piece of coursework where you are asked to report the results of statistical analysis of a provided dataset. Topics covered in each week are:
+
+1. Introduction to Research Methods + Why do we need Statistics?
+2. Introduction to R and tidyverse
+3. Data Visualisation with ggplot2
+4. The Standard Statistical Approach for One Independent Variable
+5. Understanding Null Hypothesis Significance Testing (NHST)
+6. Correlation and Regression
+7. ANOVA with one IV with more than 2 Levels
+8. ANOVA with 2 Factors and Interaction
+9. ANOVA with Repeated-Measures Factor
+10. ANOVA with both Repeated-Measures and Between-Subjects Factor
+
+The module is supported by the online book [Introduction to Statistics for Experimental Psychology with R](https://singmann.github.io/stats_for_experiments/). If you are considering switching to this module, you are advised to preview this material to see whether the approach fits your needs.
+
+### Advanced module
+
+The Advanced module is suitable for students with prior statistics experience. It may also be suitable for students without statistics experience who have the technical (mathematical/programming) skills to quickly grasp the statistical concepts covered. The Advanced module provides a unified framework of statistical inference as model comparison. It offers a refresher of the General Linear Model (GLM), the most widely-used model within this framework, before moving on to more advanced techniques such as linear mixed-effects models, generalized linear models, structural equation models (SEM), and Bayesian estimation and inference. In comparison to the Fundamental and Intermediate modules, the pace is high and the focus more theoretical and technical. Like the Intermediate module, the module uses `R` to perform statistical analyses. However, the Advanced module does not provide a "gentle" introduction to `R`. Those without prior `R` experience will have to put in additional effort to acquire basic `R` skills.
+
+Teaching consists of pre-recorded video lectures, a weekly live Q&A session, and a weekly practical class. Assessment for the module consists of a single piece of coursework where you are asked to report the results of statistical analysis of a provided dataset. Topics covered in each week are:
+
+1. Introduction to statistical modelling
+2. Regression and moderation (GLM 1)
+3. Oneway and factorial ANOVA (GLM 2)
+4. ANCOVA and linear mixed-effects models 1
+5. Linear mixed-effects models 2
+6. Generalized linear models
+7. Path models (SEM 1)
+8. Latent variable models (SEM 2)
+9. Bayesian estimation
+10. Bayesian model comparison
+
+The module is supported by two online books: [Statistics: Data analysis and modelling](https://mspeekenbrink.github.io/sdam-book/) and [An R companion to Statistics: Data analysis and modelling](https://mspeekenbrink.github.io/sdam-r-companion/). If you are considering switching to this module, you are advised to preview these materials to see whether the approach fits your needs.

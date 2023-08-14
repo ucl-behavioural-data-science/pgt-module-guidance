@@ -1,0 +1,23 @@
+project:
+  type: website
+
+website:
+  title: "PALS PGT Statistics: Module guidance"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: Module overview
+      - href: switching.qmd
+        text: Switching modules
+      - href: pgt-module-guidance.qmd
+        text: Module guidance
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
