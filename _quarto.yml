@@ -9,7 +9,7 @@ website:
       - href: index.qmd
         text: Home
       - href: about.qmd
-        text: Module overview
+        text: Modules overview
       - href: switching.qmd
         text: Switching modules
       - href: pgt-module-guidance.qmd
