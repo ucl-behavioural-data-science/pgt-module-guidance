@@ -9,7 +9,7 @@ The names of the modules reflect the approach taken and topics covered. There is
 
 The fundamental module is suitable for students without or with only limited prior statistics experience. It covers in an intuitive manner the most widely-used analyses in psychology and language sciences, such as linear regression and analysis-of-variance (ANOVA). The focus is on conceptual understanding and statistical literacy over technical details. Experience in applying the analyses is provided in practical sessions, where students are guided on using modern statistical software with a point-and-click interface (JAMOVI). JAMOVI is free and open-source statistical software, which like software such as SPSS, aims to make statistical analyses straightforward to apply for a general audience.
 
-Teaching consists of pre-recorded video lectures, a weekly live Q&A session, and a weekly practical class. Assessment for the module consists of a single piece of coursework where you are asked to report the results of statistical analysis of a provided dataset.
+Teaching consists of pre-recorded video lectures, a weekly in-person Q&A session, and a weekly in-person practical class. Assessment for the module consists of a single piece of coursework where you are asked to report the results of statistical analysis of a provided dataset.
 
 Topics covered in each week are:
 
@@ -30,7 +30,7 @@ The Intermediate module is suitable for students without prior statistics experi
 
 Using `R` effectively requires writing writing scripts, rather than selecting options in a menu as in point-and-click software such as JAMOVI. The Intermediate module provides a relatively gentle introduction to `R` programming, but because of the additional time spent on learning `R`, you will have to grasp statical concepts more quickly than in the Fundamental module. As such, the learning curve can be considered steeper than in the Fundamental module. A main consideration for switching to the Intermediate module is whether you are interested in learning to program in `R`.
 
-Teaching consists of pre-recorded video lectures, a weekly live Q&A session, and a weekly practical class. Assessment for the module consists of a single piece of coursework where you are asked to report the results of statistical analysis of a provided dataset. Topics covered in each week are:
+Teaching consists of pre-recorded video lectures, a weekly in-person Q&A session, and a weekly in-person practical class. Assessment for the module consists of a single piece of coursework where you are asked to report the results of statistical analysis of a provided dataset. Topics covered in each week are:
 
 1.  Introduction to Research Methods + Why do we need Statistics?
 2.  Introduction to R and tidyverse
@@ -49,7 +49,7 @@ The module is supported by the online book [Introduction to Statistics for Exper
 
 The Advanced module is suitable for students with prior statistics experience. It may also be suitable for students without statistics experience who have the technical (mathematical/programming) skills to quickly grasp the statistical concepts covered. The Advanced module provides a unified framework of statistical inference as model comparison. It offers a refresher of the General Linear Model (GLM), the most widely-used model within this framework, before moving on to more advanced techniques such as linear mixed-effects models, generalized linear models, structural equation models (SEM), and Bayesian estimation and inference. In comparison to the Fundamental and Intermediate modules, the pace is high and the focus more theoretical and technical. Like the Intermediate module, the module uses `R` to perform statistical analyses. However, the Advanced module does not provide a "gentle" introduction to `R`. Those without prior `R` experience will have to put in additional effort to acquire basic `R` skills.
 
-Teaching consists of pre-recorded video lectures, a weekly live Q&A session, and a weekly practical class. Assessment for the module consists of a single piece of coursework where you are asked to report the results of statistical analysis of a provided dataset. Topics covered in each week are:
+Teaching consists of pre-recorded video lectures, a weekly in-person Q&A session, and a weekly in-person practical class. Assessment for the module consists of a single piece of coursework where you are asked to report the results of statistical analysis of a provided dataset. Topics covered in each week are:
 
 1.  Introduction to statistical modelling
 2.  Regression and moderation (GLM 1)
