@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,8 +94,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
@@ -98,6 +106,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -105,9 +140,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">PALS PGT Statistics: Module guidance</span>
     </a>
@@ -119,25 +154,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">Modules overview</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">Modules overview</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./switching.html" rel="" target="">
- <span class="menu-text">Switching modules</span></a>
+    <a class="nav-link" href="./switching.html"> 
+<span class="menu-text">Switching modules</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./pgt-module-guidance.html" rel="" target="" aria-current="page">
- <span class="menu-text">Module guidance</span></a>
+    <a class="nav-link active" href="./pgt-module-guidance.html" aria-current="page"> 
+<span class="menu-text">Module guidance</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -166,7 +201,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>Here, we aim to provide guidance to which module is right for you at the moment. This guidance is automated, and depends on your answers to the questions below. This is not an exam, and your answers are not recorded. There are no right or wrong answers for the purpose of suggesting a module. As we don’t record answers, in requesting a switch to a more advanced level module, please download the “module_guidance.csv” file by clicking on the button at the bottom of this page. You should include this file when requesting a module change via email.</p>
 <p>By answering the questions below, we will provide you with automated guidance. This should not be taken as definite, as individual cases vary. The questions relate to four areas (interests, prior training, experience, and ability) and for each of these, your answers will be used to determine a level.</p>
@@ -747,9 +784,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </main> <!-- /main -->
-
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"viewof default_module = Inputs.radio(new Map(\n  [\n    [\"Fundamental module\",\"fundamental\"],\n    [\"Intermediate module\", \"intermediate\"],\n    [\"Advanced module\",\"advanced\"]\n  ] \n))\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof interest = Inputs.radio(new Map(\n  [\n    [\"Fundamental module\",\"fundamental\"],\n    [\"Intermediate module\", \"intermediate\"],\n    [\"Advanced module\",\"advanced\"]\n  ] \n))\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"viewof self_rating = Inputs.range([0,100], {step: 1}, {value: 0})\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"viewof self_rating_coding = Inputs.range([0,100], {step: 1}, {value: 0})\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"viewof education = Inputs.radio([\n    {label: \"None\",value: 0},\n    {label: \"Some (e.g. a single undergraduate statistics module or online course)\",value: 1},\n    {label: \"Medium (e.g. two undergraduate statistics modules or online courses)\",value: 2},\n    {label: \"Extensive (e.g. more than 2 undergraduate statistics modules or online courses)\",value: 3}\n  ], {format: x => x.label})\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"viewof education_when = Inputs.radio([\n    {label: \"Never\", value: 0},\n    {label: \"More than 10 years ago\",value: 1},\n    {label: \"Between 3 and 10 years ago\", value: 2},\n    {label: \"Between 3 and 1 years ago\",value: 3},\n    {label: \"Within the last year\", value: 4}\n  ], {format: x => x.label})\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"viewof analyses_learned = Inputs.checkbox(\n  [\n    {label: \"Analysis-of-variance (ANOVA)\", value: 2},\n    {label: \"Bivariate (or simple) regression\", value: 1},\n    {label: \"Correlation\", value: 1},\n    {label: \"Factor analysis\", value: 3},\n    {label: \"Linear mixed-effects models\", value: 3},\n    {label: \"Logistic regression\", value: 2},\n    {label: \"Multiple regression\", value: 2},\n    {label: \"Multivariate analysis-of-variance (MANOVA)\", value: 3},\n    {label: \"Bivariate or simple regression\", value: 1},\n    {label: \"Structural Equation Modeling (SEM)\", value: 3},\n    {label: \"t-test\", value: 1}\n  ], {format: x => x.label})\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"viewof analyses_used = Inputs.checkbox([\n    {label: \"Analysis-of-variance (ANOVA)\", value: 2},\n    {label: \"Bivariate (or simple) regression\", value: 1},\n    {label: \"Correlation\", value: 1},\n    {label: \"Factor analysis\", value: 3},\n    {label: \"Linear mixed-effects models\", value: 3},\n    {label: \"Logistic regression\", value: 2},\n    {label: \"Multiple regression\", value: 2},\n    {label: \"Multivariate analysis-of-variance (MANOVA)\", value: 3},\n    {label: \"Bivariate or simple regression\", value: 1},\n    {label: \"Structural Equation Modeling (SEM)\", value: 3},\n    {label: \"t-test\", value: 1}\n  ], {format: x => x.label})\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"viewof software_used = Inputs.checkbox([\n    {label: \"C/C++\", value: \"language\"},\n    {label: \"JAMOVI\", value: \"click\"},\n    {label: \"JASP\", value: \"click\"},\n    {label: \"julia\", value: \"language\"},\n    {label: \"Matlab\", value: \"language\"},\n    {label: \"Python\", value: \"language\"},\n    {label: \"R\", value: \"R\"},\n    {label: \"SAS\", value: \"script\"},\n    {label: \"SPSS\", value: \"click\"},\n    {label: \"STATA\", value: \"script\"},\n    {label: \"other\", value: \"other\"}\n  ], {format: x => x.label})\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"viewof algebra_1 = Inputs.radio(new Map(\n  [\n    [\"1\",0],\n    [\"3\",0],\n    [\"4\",0],\n    [\"6\",1],\n    [\"9\",0]\n  ]\n))\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"viewof algebra_2 = Inputs.radio(new Map(\n  [\n    [\"Y\",0],\n    [\"a/b\",0],\n    [\"(Y-a)/b\",1],\n    [\"a + b × Y\",0],\n    [\"b × Y\",0]\n  ]\n))\n"},{"methodName":"interpret","cellName":"ojs-cell-12","inline":false,"source":"\n// viewof submit = Inputs.button(\"Submit\")\n\nfunction arraySum(arr) {\n  return arr.reduce((total, current) => {\n      return total + current;\n  }, 0);\n}\n  \n_interest = interest;\n\n_software_used = software_used.reduce(function (\n    count,\n    currentValue\n) {\n    return (\n        count[currentValue.value] ? ++count[currentValue.value] : (count[currentValue.value] = 1),\n        count\n    );\n},\n{});\n\n_ability = {\n  if(algebra_1 === 1 && algebra_2 === 1 && self_rating >= 70)  {\n    yield {rating: 3, level: \"advanced\", explanation: \"You indicate good technical ability and have grasp of basic algebra.\"};\n  } else if (self_rating >= 50) {\n    yield {rating: 2, level: \"intermediate\", \"explanation\": \"You indicate a reasonable technical/numerical ability but incorrectly answered some of the basic algebra questions.\"};\n  } else {\n    yield {rating: 1, level: \"fundamental\", \"explanation\": \"You indicate some lack of technical/numerical ability.\"};\n  }\n}\n\n_programming = {\n    if(self_rating_coding >= 70  && (_software_used[\"R\"] == 1 || _software_used[\"language\"] >= 1)) {\n      yield {rating: 3, level: \"advanced\", explanation: \"You indicate good programming ability and have experience with R or other programming languages.\"};\n   } else if(self_rating_coding >= 50) {\n      yield {rating: 2, level: \"intermediate\", explanation: \"You indicate a reasonable programming ability.\"};\n   } else {\n      yield {rating: 1, level: \"fundamental\", explanation: \"You indicate some lack of programming ability.\"};\n   }\n}\n\n_analyses_learned = analyses_learned.reduce(function (\n    count,\n    currentValue\n) {\n    return (\n        count[currentValue.value] ? ++count[currentValue.value] : (count[currentValue.value] = 1),\n        count\n    );\n},\n{});\n\n_analyses_used = analyses_used.reduce(function (\n    count,\n    currentValue\n) {\n    return (\n        count[currentValue.value] ? ++count[currentValue.value] : (count[currentValue.value] = 1),\n        count\n    );\n},\n{});\n\n\n\n_education = {\nif(education !== null && education_when !== null) {\n  // (education/3)*(education_when/4)\n  if (education.value >= 2 && education_when.value >= 2 && _analyses_learned[\"2\"] >= 2) {\n    yield {rating: 3, level: \"advanced\", \"explanation\": \"You have received recent prior statistics education, which covered at least some intermediate topics.\"};\n  } else if (education.value == 0 || education_when.value < 2) {\n    yield {rating: 1, level: \"fundamental\", explanation: \"You have not received prior statistics education, or this was a long time ago.\"};\n  } else {\n    yield {rating: 2, level: \"intermediate\", explanation: \"You have received some prior statistics education in the not too distant past.\"};\n  } \n} else {\n  yield null;\n}\n}\n\n_experience = {\n  let explnt = \"\";\n  if(_analyses_used[\"1\"] >= 2 && _analyses_used[\"2\"] >= 2) {\n    explnt += \"You have experience with at least some intermediate analyses\";\n    if(_analyses_used[\"3\"] >= 1) {\n      explnt += \" and advanced analyses\";\n    }\n    if (_software_used[\"R\"] === 1) {\n      explnt += \", as well as R.\";\n    } else if (_software_used[\"language\"] >= 1 || _software_used[\"script\"] >= 1) {\n      explnt += \", as well as some programming languages or statistical scripting languages.\"\n    }\n    yield {rating: 3, level: \"advanced\", explanation: explnt};\n  } else if ((_analyses_used[\"1\"] <= 2 && _analyses_used[\"2\"] == 0 && _analyses_used[\"3\"] == 0) || (_analyses_used[\"1\"] === undefined && _analyses_used[\"2\"] === undefined && _analyses_used[\"3\"] === undefined)) {\n    explnt += \"You have experience with at most some basic analyses.\";\n    yield {rating: 1, level: \"fundamental\", explanation: explnt}\n  } else {\n    yield {rating: 2, level: \"intermediate\", explanation: \"You have some experience in applying statistical analyses.\"};\n  }\n}\n\nmytab = {\n  if (interest === null || education === null || education_when === null || algebra_1 === null || algebra_2 === null) {\n  yield []\n} else {\n  yield [\n    {area: \"interest\", level: _interest, reason: \"\"},\n    {area: \"training\", level: _education.level, reason: _education.explanation},\n    {area: \"experience\", level: _experience.level, reason: _experience.explanation},\n    {area: \"technical\", level: _ability.level, reason: _ability.explanation},\n    {area: \"programming\", level: _programming.level, reason: _programming.explanation}\n  ]\n  }\n}\n\nhtml`<h2>Guidance</h2>`\n\nviewof table = Inputs.table(mytab)\n\n\n// chart = vl.markBar() // Make a bar chart \n//   .data([{name: \"interests\", value: _interest},\n//          {name: \"ability\", value: _ability},\n//          {name: \"training\", value: _education},\n//          {name: \"experience\", value: _experience}])\n//   .encode(\n//     vl.y().fieldO(\"name\"),        // Show letters in sequential order on the x-axis\n//     vl.x().fieldQ(\"value\"), //.axis({ format: \"%\" }), // Show frequency on the y-axis, formatted as percent\n//     // vl.color().value(yourColor)   // Set the bar color\n//   )\n//   .render()\n\nadvice = {\n  // submit;\n  let advice_string = \"\";\n  if(interest === null || education === null || education_when === null || algebra_1 === null || algebra_2 === null) {\n    advice_string += \"Please answer all questions.\";\n  } else {\n    if (interest === \"advanced\") {\n      advice_string += \"You indicate you are interested in taking the Advanced module. \"\n    // check prior education \n      if(_education.level === \"advanced\" && _ability.level === \"advanced\" && _experience.level === \"advanced\" && _programming.rating >= 2) {\n      // perfect score\n        advice_string += \"Based on your stated prior education and experience with statistical analyses, as well as your (subjective) technical and programming ability, we believe this is likely the right choice for you. As such, the advice is to take the Advanced module.\"\n      } else if (_education.rating >= 1 && _ability.rating === 3 && _experience.rating === 3 && _programming.rating === 3) {\n        advice_string += \"Whilst your stated prior education is more suitable for the Intermediate module, your stated experience with statistical analyses and your (subjective) technical and programming ability indicate you may be ready to take the Advanced module. As such, the advice is to consider taking the Advanced module, although the Intermediate module might be more suitable to you.\"\n      } else if(_education.rating === 3 && _ability.rating === 3 && _experience.rating >= 1 && _programming.rating === 3 && _software_used[\"R\"] === 1) {\n        advice_string += \"You seem to have experience mostly with the more basic statisical analyses. However, your stated prior education and (subjective) technical and programming ability, as well asw your experience with R, indicate you may be ready to take the Advanced module. As such, the advice is to consider taking the Advanced module, although the Intermediate module might be more suitable to you.\"\n      } else if(_education.rating >= 2 && _ability.rating === 3 && _experience.rating >= 1 && _programming.rating === 3) {\n        advice_string += \"You seem to have experience mostly with the more basic statisical analyses. However, your stated prior education and (subjective) technical and programming ability indicate you are likely ready to take the Advanced module. As such, the advice is to consider taking the Advanced module, although the Intermediate module might be more suitable to you.\"\n      } else if (_ability.rating === 3 && _education.rating >= 1 && _experience.rating >= 1 && _programming.rating === 3) {\n        advice_string += \"Your prior statistics education and experience is more suitable to the Intermediate module. However, your (subjective) technical and programming ability indicate you could be ready to take the Advanced module. As such, the advice is take the Intermediate module, but you can consider taking the Advanced module if you feel confident you can quickly grasp the statistical concepts.\"\n      } else if (_education.rating === 3 && _experience.rating === 3 && _programming.rating < 3 && _ability.rating < 3) {\n        advice_string += \"However, your (subjective) technical and programming ability indicates the Advanced module may not be suitable for you. That said, your stated prior education and experience with statistical analyses indicate you could be ready to take the Advanced module. Our advice is to take the Intermediate module, although you could consider taking the Advanced module if you are willing to put in additional effort to improve your technical and programming ability.\"\n      } else if (_education.rating === 2 && _experience.rating === 3 && _programming.rating < 3 && _ability.rating < 3) {\n        advice_string += \"However, your (subjective) technical and programming ability indicates the Advanced module may not be suitable to you. Nevertheless, your stated prior education and experience with statistical analyses indicate you could be ready to take the Advanced module. Our advice is to take the Intermediate module, although you could consider taking the Advanced module if you are willing to put in additional effort to improve your technical and programming ability.\"\n      } else if (default_module === \"intermediate\") {\n        advice_string += \"However, your answers indicate that this is likely not the best choice for you. As such, our recommendation is to take the Intermediate module.\" \n      } else {\n        advice_string += \"However, your answers indicate that this is likely not the best choice for you. As such, our recommendation is to take the Intermediate or Fundamental module.\" \n      }\n    } else if (_interest === \"intermediate\") {\n    advice_string += \"You indicate you are interested in taking the Intermediate module. \"\n    if(_education.rating === 3 && _ability.rating === 3 && _experience.rating === 3 && _programming.rating === 3) {\n      advice_string += \"Your prior statistics education and experience, as well as your (subjective) technical and programming ability, indicate that the Advanced module may also be the right choice for you. Our advise is therefore to take the Intermediate module, although you could consider the Advanced module as well.\"\n      } else if(_education.rating >= 1 && _ability.rating >= 2 && _experience.rating >= 1 && _programming.rating >= 2) {\n      // perfect score\n        advice_string += \"Based on your stated prior education and experience with statistical analyses, as well as your (subjective) technical and programming ability, we believe this is likely the right choice for you. As such, the advice is to take the Intermediate module.\"\n      } else if( _ability.rating === 1 && _programming.ability === 1 && default_module === \"fundamental\") {\n        advice_string += \"However, your (subjective) technical and programming ability indicates that you may struggle with some of the aspects of this module. As such, the advice is to take the Fundamental module. You can consider the Intermediate module, but you should realise that learning to program in R may be difficult and require additional effort.\"\n      } else {\n        advice_string += \"However, your (subjective) technical and programming ability indicates that you may struggle with some of the aspects of this module.\"\n      }\n    } else if(_interest === \"fundamental\" && default_module !== \"fundamental\") {\n      advice_string += \"You indicate you are interested in taking the Fundamental module. However, the default module of your programme is set at a higher level, and you can not switch to the Fundamental module.\"\n    } else if(_interest === \"fundamental\") {\n      advice_string += \"You indicate you are interested in taking the Fundamental module.\"\n      if(_education.rating === 3 && _ability.rating === 3 && _experience.rating === 3 && _programming.rating === 3) {\n        advice_string += \" Your stated prior education and experience with statistical analyses, as well as your (subjective) technical and programming ability, indicate that the Advanced module may also be the right choice for you. Our advise is therefore to take the Fundamental module, although you may consider the Advanced module. \"\n      } else if(education >= 2 && education_when > 1 && _programming.rating >= 2) {\n        advice_string += \" As you indicate relevant and (at least somewhat) recent prior statistics education, as well as some programming/coding ability, you could also consider taking the Intermediate module.\"\n      } else {\n        advice_string += \" As this is the default module in your programme, we recommend you stick to the Fundamental module.\"\n      }\n    }\n  }\n  yield advice_string;\n}\nhtml`<p></p><p>${advice}</p>`\n"},{"methodName":"interpret","cellName":"ojs-cell-13","inline":false,"source":"\nimport {button} from \"@jeremiak/download-data-button\"\n\nanalyses_learned_text = analyses_learned.map(function(x){return x.label}).join(\",\");\nanalyses_used_text = analyses_used.map(function(x){return x.label}).join(\",\");\nsoftware_used_text = software_used.map(function(x){return x.label}).join(\",\");\neducation_text = { if(education != null) {yield education.label} else {yield \"\"}}\neducation_when_text = {if(education_when != null) {yield education_when.label} else {yield \"\"}}\n\n\nsave_data = {\n  if(mytab.length > 1) {yield [\n  {advice: advice},\n  {domain: \"training\", level: mytab[1].level, reason: mytab[1].reason},\n  {domain: \"experience\", level: mytab[2].level, reason: mytab[2].reason},\n  {domain: \"technical\", level: mytab[3].level, reason: mytab[3].reason},\n  {domain: \"programming\", level: mytab[4].level, reason: mytab[4].reason},\n  {question: \"Default module\", value: default_module},\n  {question: \"Interested in\", value: interest},\n  {question: \"Technical ability\", value: self_rating},\n  {question: \"Programming ability\", value: self_rating_coding},\n  {question: \"Prior education\", value: education_text},\n  {question: \"Prior education when\", value: education_when_text},\n  {question: \"Analyses learned\", value: analyses_learned_text},\n  {question: \"Analyses used\", value: analyses_used_text},\n  {question: \"Software used\", value: software_used_text},\n  {question: \"Algebra 1\", value: algebra_1},\n  {question: \"Algebra 2\", value: algebra_2}\n]} else {\n  yield [{}];\n}\n}\nbutton(save_data, \"module_guidance.csv\")\n"},{"methodName":"interpretQuiet","source":"shinyInput('default_module')"},{"methodName":"interpretQuiet","source":"shinyInput('interest')"},{"methodName":"interpretQuiet","source":"shinyInput('self_rating')"},{"methodName":"interpretQuiet","source":"shinyInput('self_rating_coding')"},{"methodName":"interpretQuiet","source":"shinyInput('education')"},{"methodName":"interpretQuiet","source":"shinyInput('education_when')"},{"methodName":"interpretQuiet","source":"shinyInput('analyses_learned')"},{"methodName":"interpretQuiet","source":"shinyInput('analyses_used')"},{"methodName":"interpretQuiet","source":"shinyInput('software_used')"},{"methodName":"interpretQuiet","source":"shinyInput('algebra_1')"},{"methodName":"interpretQuiet","source":"shinyInput('algebra_2')"},{"methodName":"interpretQuiet","source":"shinyInput('table')"}]}
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBkZWZhdWx0X21vZHVsZSA9IElucHV0cy5yYWRpbyhuZXcgTWFwKFxuICBbXG4gICAgW1wiRnVuZGFtZW50YWwgbW9kdWxlXCIsXCJmdW5kYW1lbnRhbFwiXSxcbiAgICBbXCJJbnRlcm1lZGlhdGUgbW9kdWxlXCIsIFwiaW50ZXJtZWRpYXRlXCJdLFxuICAgIFtcIkFkdmFuY2VkIG1vZHVsZVwiLFwiYWR2YW5jZWRcIl1cbiAgXSBcbikpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgaW50ZXJlc3QgPSBJbnB1dHMucmFkaW8obmV3IE1hcChcbiAgW1xuICAgIFtcIkZ1bmRhbWVudGFsIG1vZHVsZVwiLFwiZnVuZGFtZW50YWxcIl0sXG4gICAgW1wiSW50ZXJtZWRpYXRlIG1vZHVsZVwiLCBcImludGVybWVkaWF0ZVwiXSxcbiAgICBbXCJBZHZhbmNlZCBtb2R1bGVcIixcImFkdmFuY2VkXCJdXG4gIF0gXG4pKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIHNlbGZfcmF0aW5nID0gSW5wdXRzLnJhbmdlKFswLDEwMF0sIHtzdGVwOiAxfSwge3ZhbHVlOiAwfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBzZWxmX3JhdGluZ19jb2RpbmcgPSBJbnB1dHMucmFuZ2UoWzAsMTAwXSwge3N0ZXA6IDF9LCB7dmFsdWU6IDB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC01IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIGVkdWNhdGlvbiA9IElucHV0cy5yYWRpbyhbXG4gICAge2xhYmVsOiBcIk5vbmVcIix2YWx1ZTogMH0sXG4gICAge2xhYmVsOiBcIlNvbWUgKGUuZy4gYSBzaW5nbGUgdW5kZXJncmFkdWF0ZSBzdGF0aXN0aWNzIG1vZHVsZSBvciBvbmxpbmUgY291cnNlKVwiLHZhbHVlOiAxfSxcbiAgICB7bGFiZWw6IFwiTWVkaXVtIChlLmcuIHR3byB1bmRlcmdyYWR1YXRlIHN0YXRpc3RpY3MgbW9kdWxlcyBvciBvbmxpbmUgY291cnNlcylcIix2YWx1ZTogMn0sXG4gICAge2xhYmVsOiBcIkV4dGVuc2l2ZSAoZS5nLiBtb3JlIHRoYW4gMiB1bmRlcmdyYWR1YXRlIHN0YXRpc3RpY3MgbW9kdWxlcyBvciBvbmxpbmUgY291cnNlcylcIix2YWx1ZTogM31cbiAgXSwge2Zvcm1hdDogeCA9PiB4LmxhYmVsfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBlZHVjYXRpb25fd2hlbiA9IElucHV0cy5yYWRpbyhbXG4gICAge2xhYmVsOiBcIk5ldmVyXCIsIHZhbHVlOiAwfSxcbiAgICB7bGFiZWw6IFwiTW9yZSB0aGFuIDEwIHllYXJzIGFnb1wiLHZhbHVlOiAxfSxcbiAgICB7bGFiZWw6IFwiQmV0d2VlbiAzIGFuZCAxMCB5ZWFycyBhZ29cIiwgdmFsdWU6IDJ9LFxuICAgIHtsYWJlbDogXCJCZXR3ZWVuIDMgYW5kIDEgeWVhcnMgYWdvXCIsdmFsdWU6IDN9LFxuICAgIHtsYWJlbDogXCJXaXRoaW4gdGhlIGxhc3QgeWVhclwiLCB2YWx1ZTogNH1cbiAgXSwge2Zvcm1hdDogeCA9PiB4LmxhYmVsfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBhbmFseXNlc19sZWFybmVkID0gSW5wdXRzLmNoZWNrYm94KFxuICBbXG4gICAge2xhYmVsOiBcIkFuYWx5c2lzLW9mLXZhcmlhbmNlIChBTk9WQSlcIiwgdmFsdWU6IDJ9LFxuICAgIHtsYWJlbDogXCJCaXZhcmlhdGUgKG9yIHNpbXBsZSkgcmVncmVzc2lvblwiLCB2YWx1ZTogMX0sXG4gICAge2xhYmVsOiBcIkNvcnJlbGF0aW9uXCIsIHZhbHVlOiAxfSxcbiAgICB7bGFiZWw6IFwiRmFjdG9yIGFuYWx5c2lzXCIsIHZhbHVlOiAzfSxcbiAgICB7bGFiZWw6IFwiTGluZWFyIG1peGVkLWVmZmVjdHMgbW9kZWxzXCIsIHZhbHVlOiAzfSxcbiAgICB7bGFiZWw6IFwiTG9naXN0aWMgcmVncmVzc2lvblwiLCB2YWx1ZTogMn0sXG4gICAge2xhYmVsOiBcIk11bHRpcGxlIHJlZ3Jlc3Npb25cIiwgdmFsdWU6IDJ9LFxuICAgIHtsYWJlbDogXCJNdWx0aXZhcmlhdGUgYW5hbHlzaXMtb2YtdmFyaWFuY2UgKE1BTk9WQSlcIiwgdmFsdWU6IDN9LFxuICAgIHtsYWJlbDogXCJCaXZhcmlhdGUgb3Igc2ltcGxlIHJlZ3Jlc3Npb25cIiwgdmFsdWU6IDF9LFxuICAgIHtsYWJlbDogXCJTdHJ1Y3R1cmFsIEVxdWF0aW9uIE1vZGVsaW5nIChTRU0pXCIsIHZhbHVlOiAzfSxcbiAgICB7bGFiZWw6IFwidC10ZXN0XCIsIHZhbHVlOiAxfVxuICBdLCB7Zm9ybWF0OiB4ID0+IHgubGFiZWx9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC04IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIGFuYWx5c2VzX3VzZWQgPSBJbnB1dHMuY2hlY2tib3goW1xuICAgIHtsYWJlbDogXCJBbmFseXNpcy1vZi12YXJpYW5jZSAoQU5PVkEpXCIsIHZhbHVlOiAyfSxcbiAgICB7bGFiZWw6IFwiQml2YXJpYXRlIChvciBzaW1wbGUpIHJlZ3Jlc3Npb25cIiwgdmFsdWU6IDF9LFxuICAgIHtsYWJlbDogXCJDb3JyZWxhdGlvblwiLCB2YWx1ZTogMX0sXG4gICAge2xhYmVsOiBcIkZhY3RvciBhbmFseXNpc1wiLCB2YWx1ZTogM30sXG4gICAge2xhYmVsOiBcIkxpbmVhciBtaXhlZC1lZmZlY3RzIG1vZGVsc1wiLCB2YWx1ZTogM30sXG4gICAge2xhYmVsOiBcIkxvZ2lzdGljIHJlZ3Jlc3Npb25cIiwgdmFsdWU6IDJ9LFxuICAgIHtsYWJlbDogXCJNdWx0aXBsZSByZWdyZXNzaW9uXCIsIHZhbHVlOiAyfSxcbiAgICB7bGFiZWw6IFwiTXVsdGl2YXJpYXRlIGFuYWx5c2lzLW9mLXZhcmlhbmNlIChNQU5PVkEpXCIsIHZhbHVlOiAzfSxcbiAgICB7bGFiZWw6IFwiQml2YXJpYXRlIG9yIHNpbXBsZSByZWdyZXNzaW9uXCIsIHZhbHVlOiAxfSxcbiAgICB7bGFiZWw6IFwiU3RydWN0dXJhbCBFcXVhdGlvbiBNb2RlbGluZyAoU0VNKVwiLCB2YWx1ZTogM30sXG4gICAge2xhYmVsOiBcInQtdGVzdFwiLCB2YWx1ZTogMX1cbiAgXSwge2Zvcm1hdDogeCA9PiB4LmxhYmVsfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBzb2Z0d2FyZV91c2VkID0gSW5wdXRzLmNoZWNrYm94KFtcbiAgICB7bGFiZWw6IFwiQy9DKytcIiwgdmFsdWU6IFwibGFuZ3VhZ2VcIn0sXG4gICAge2xhYmVsOiBcIkpBTU9WSVwiLCB2YWx1ZTogXCJjbGlja1wifSxcbiAgICB7bGFiZWw6IFwiSkFTUFwiLCB2YWx1ZTogXCJjbGlja1wifSxcbiAgICB7bGFiZWw6IFwianVsaWFcIiwgdmFsdWU6IFwibGFuZ3VhZ2VcIn0sXG4gICAge2xhYmVsOiBcIk1hdGxhYlwiLCB2YWx1ZTogXCJsYW5ndWFnZVwifSxcbiAgICB7bGFiZWw6IFwiUHl0aG9uXCIsIHZhbHVlOiBcImxhbmd1YWdlXCJ9LFxuICAgIHtsYWJlbDogXCJSXCIsIHZhbHVlOiBcIlJcIn0sXG4gICAge2xhYmVsOiBcIlNBU1wiLCB2YWx1ZTogXCJzY3JpcHRcIn0sXG4gICAge2xhYmVsOiBcIlNQU1NcIiwgdmFsdWU6IFwiY2xpY2tcIn0sXG4gICAge2xhYmVsOiBcIlNUQVRBXCIsIHZhbHVlOiBcInNjcmlwdFwifSxcbiAgICB7bGFiZWw6IFwib3RoZXJcIiwgdmFsdWU6IFwib3RoZXJcIn1cbiAgXSwge2Zvcm1hdDogeCA9PiB4LmxhYmVsfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgYWxnZWJyYV8xID0gSW5wdXRzLnJhZGlvKG5ldyBNYXAoXG4gIFtcbiAgICBbXCIxXCIsMF0sXG4gICAgW1wiM1wiLDBdLFxuICAgIFtcIjRcIiwwXSxcbiAgICBbXCI2XCIsMV0sXG4gICAgW1wiOVwiLDBdXG4gIF1cbikpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTExIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIGFsZ2VicmFfMiA9IElucHV0cy5yYWRpbyhuZXcgTWFwKFxuICBbXG4gICAgW1wiWVwiLDBdLFxuICAgIFtcImEvYlwiLDBdLFxuICAgIFtcIihZLWEpL2JcIiwxXSxcbiAgICBbXCJhICsgYiDDlyBZXCIsMF0sXG4gICAgW1wiYiDDlyBZXCIsMF1cbiAgXVxuKSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbi8vIHZpZXdvZiBzdWJtaXQgPSBJbnB1dHMuYnV0dG9uKFwiU3VibWl0XCIpXG5cbmZ1bmN0aW9uIGFycmF5U3VtKGFycikge1xuICByZXR1cm4gYXJyLnJlZHVjZSgodG90YWwsIGN1cnJlbnQpID0+IHtcbiAgICAgIHJldHVybiB0b3RhbCArIGN1cnJlbnQ7XG4gIH0sIDApO1xufVxuICBcbl9pbnRlcmVzdCA9IGludGVyZXN0O1xuXG5fc29mdHdhcmVfdXNlZCA9IHNvZnR3YXJlX3VzZWQucmVkdWNlKGZ1bmN0aW9uIChcbiAgICBjb3VudCxcbiAgICBjdXJyZW50VmFsdWVcbikge1xuICAgIHJldHVybiAoXG4gICAgICAgIGNvdW50W2N1cnJlbnRWYWx1ZS52YWx1ZV0gPyArK2NvdW50W2N1cnJlbnRWYWx1ZS52YWx1ZV0gOiAoY291bnRbY3VycmVudFZhbHVlLnZhbHVlXSA9IDEpLFxuICAgICAgICBjb3VudFxuICAgICk7XG59LFxue30pO1xuXG5fYWJpbGl0eSA9IHtcbiAgaWYoYWxnZWJyYV8xID09PSAxICYmIGFsZ2VicmFfMiA9PT0gMSAmJiBzZWxmX3JhdGluZyA+PSA3MCkgIHtcbiAgICB5aWVsZCB7cmF0aW5nOiAzLCBsZXZlbDogXCJhZHZhbmNlZFwiLCBleHBsYW5hdGlvbjogXCJZb3UgaW5kaWNhdGUgZ29vZCB0ZWNobmljYWwgYWJpbGl0eSBhbmQgaGF2ZSBncmFzcCBvZiBiYXNpYyBhbGdlYnJhLlwifTtcbiAgfSBlbHNlIGlmIChzZWxmX3JhdGluZyA+PSA1MCkge1xuICAgIHlpZWxkIHtyYXRpbmc6IDIsIGxldmVsOiBcImludGVybWVkaWF0ZVwiLCBcImV4cGxhbmF0aW9uXCI6IFwiWW91IGluZGljYXRlIGEgcmVhc29uYWJsZSB0ZWNobmljYWwvbnVtZXJpY2FsIGFiaWxpdHkgYnV0IGluY29ycmVjdGx5IGFuc3dlcmVkIHNvbWUgb2YgdGhlIGJhc2ljIGFsZ2VicmEgcXVlc3Rpb25zLlwifTtcbiAgfSBlbHNlIHtcbiAgICB5aWVsZCB7cmF0aW5nOiAxLCBsZXZlbDogXCJmdW5kYW1lbnRhbFwiLCBcImV4cGxhbmF0aW9uXCI6IFwiWW91IGluZGljYXRlIHNvbWUgbGFjayBvZiB0ZWNobmljYWwvbnVtZXJpY2FsIGFiaWxpdHkuXCJ9O1xuICB9XG59XG5cbl9wcm9ncmFtbWluZyA9IHtcbiAgICBpZihzZWxmX3JhdGluZ19jb2RpbmcgPj0gNzAgICYmIChfc29mdHdhcmVfdXNlZFtcIlJcIl0gPT0gMSB8fCBfc29mdHdhcmVfdXNlZFtcImxhbmd1YWdlXCJdID49IDEpKSB7XG4gICAgICB5aWVsZCB7cmF0aW5nOiAzLCBsZXZlbDogXCJhZHZhbmNlZFwiLCBleHBsYW5hdGlvbjogXCJZb3UgaW5kaWNhdGUgZ29vZCBwcm9ncmFtbWluZyBhYmlsaXR5IGFuZCBoYXZlIGV4cGVyaWVuY2Ugd2l0aCBSIG9yIG90aGVyIHByb2dyYW1taW5nIGxhbmd1YWdlcy5cIn07XG4gICB9IGVsc2UgaWYoc2VsZl9yYXRpbmdfY29kaW5nID49IDUwKSB7XG4gICAgICB5aWVsZCB7cmF0aW5nOiAyLCBsZXZlbDogXCJpbnRlcm1lZGlhdGVcIiwgZXhwbGFuYXRpb246IFwiWW91IGluZGljYXRlIGEgcmVhc29uYWJsZSBwcm9ncmFtbWluZyBhYmlsaXR5LlwifTtcbiAgIH0gZWxzZSB7XG4gICAgICB5aWVsZCB7cmF0aW5nOiAxLCBsZXZlbDogXCJmdW5kYW1lbnRhbFwiLCBleHBsYW5hdGlvbjogXCJZb3UgaW5kaWNhdGUgc29tZSBsYWNrIG9mIHByb2dyYW1taW5nIGFiaWxpdHkuXCJ9O1xuICAgfVxufVxuXG5fYW5hbHlzZXNfbGVhcm5lZCA9IGFuYWx5c2VzX2xlYXJuZWQucmVkdWNlKGZ1bmN0aW9uIChcbiAgICBjb3VudCxcbiAgICBjdXJyZW50VmFsdWVcbikge1xuICAgIHJldHVybiAoXG4gICAgICAgIGNvdW50W2N1cnJlbnRWYWx1ZS52YWx1ZV0gPyArK2NvdW50W2N1cnJlbnRWYWx1ZS52YWx1ZV0gOiAoY291bnRbY3VycmVudFZhbHVlLnZhbHVlXSA9IDEpLFxuICAgICAgICBjb3VudFxuICAgICk7XG59LFxue30pO1xuXG5fYW5hbHlzZXNfdXNlZCA9IGFuYWx5c2VzX3VzZWQucmVkdWNlKGZ1bmN0aW9uIChcbiAgICBjb3VudCxcbiAgICBjdXJyZW50VmFsdWVcbikge1xuICAgIHJldHVybiAoXG4gICAgICAgIGNvdW50W2N1cnJlbnRWYWx1ZS52YWx1ZV0gPyArK2NvdW50W2N1cnJlbnRWYWx1ZS52YWx1ZV0gOiAoY291bnRbY3VycmVudFZhbHVlLnZhbHVlXSA9IDEpLFxuICAgICAgICBjb3VudFxuICAgICk7XG59LFxue30pO1xuXG5cblxuX2VkdWNhdGlvbiA9IHtcbmlmKGVkdWNhdGlvbiAhPT0gbnVsbCAmJiBlZHVjYXRpb25fd2hlbiAhPT0gbnVsbCkge1xuICAvLyAoZWR1Y2F0aW9uLzMpKihlZHVjYXRpb25fd2hlbi80KVxuICBpZiAoZWR1Y2F0aW9uLnZhbHVlID49IDIgJiYgZWR1Y2F0aW9uX3doZW4udmFsdWUgPj0gMiAmJiBfYW5hbHlzZXNfbGVhcm5lZFtcIjJcIl0gPj0gMikge1xuICAgIHlpZWxkIHtyYXRpbmc6IDMsIGxldmVsOiBcImFkdmFuY2VkXCIsIFwiZXhwbGFuYXRpb25cIjogXCJZb3UgaGF2ZSByZWNlaXZlZCByZWNlbnQgcHJpb3Igc3RhdGlzdGljcyBlZHVjYXRpb24sIHdoaWNoIGNvdmVyZWQgYXQgbGVhc3Qgc29tZSBpbnRlcm1lZGlhdGUgdG9waWNzLlwifTtcbiAgfSBlbHNlIGlmIChlZHVjYXRpb24udmFsdWUgPT0gMCB8fCBlZHVjYXRpb25fd2hlbi52YWx1ZSA8IDIpIHtcbiAgICB5aWVsZCB7cmF0aW5nOiAxLCBsZXZlbDogXCJmdW5kYW1lbnRhbFwiLCBleHBsYW5hdGlvbjogXCJZb3UgaGF2ZSBub3QgcmVjZWl2ZWQgcHJpb3Igc3RhdGlzdGljcyBlZHVjYXRpb24sIG9yIHRoaXMgd2FzIGEgbG9uZyB0aW1lIGFnby5cIn07XG4gIH0gZWxzZSB7XG4gICAgeWllbGQge3JhdGluZzogMiwgbGV2ZWw6IFwiaW50ZXJtZWRpYXRlXCIsIGV4cGxhbmF0aW9uOiBcIllvdSBoYXZlIHJlY2VpdmVkIHNvbWUgcHJpb3Igc3RhdGlzdGljcyBlZHVjYXRpb24gaW4gdGhlIG5vdCB0b28gZGlzdGFudCBwYXN0LlwifTtcbiAgfSBcbn0gZWxzZSB7XG4gIHlpZWxkIG51bGw7XG59XG59XG5cbl9leHBlcmllbmNlID0ge1xuICBsZXQgZXhwbG50ID0gXCJcIjtcbiAgaWYoX2FuYWx5c2VzX3VzZWRbXCIxXCJdID49IDIgJiYgX2FuYWx5c2VzX3VzZWRbXCIyXCJdID49IDIpIHtcbiAgICBleHBsbnQgKz0gXCJZb3UgaGF2ZSBleHBlcmllbmNlIHdpdGggYXQgbGVhc3Qgc29tZSBpbnRlcm1lZGlhdGUgYW5hbHlzZXNcIjtcbiAgICBpZihfYW5hbHlzZXNfdXNlZFtcIjNcIl0gPj0gMSkge1xuICAgICAgZXhwbG50ICs9IFwiIGFuZCBhZHZhbmNlZCBhbmFseXNlc1wiO1xuICAgIH1cbiAgICBpZiAoX3NvZnR3YXJlX3VzZWRbXCJSXCJdID09PSAxKSB7XG4gICAgICBleHBsbnQgKz0gXCIsIGFzIHdlbGwgYXMgUi5cIjtcbiAgICB9IGVsc2UgaWYgKF9zb2Z0d2FyZV91c2VkW1wibGFuZ3VhZ2VcIl0gPj0gMSB8fCBfc29mdHdhcmVfdXNlZFtcInNjcmlwdFwiXSA+PSAxKSB7XG4gICAgICBleHBsbnQgKz0gXCIsIGFzIHdlbGwgYXMgc29tZSBwcm9ncmFtbWluZyBsYW5ndWFnZXMgb3Igc3RhdGlzdGljYWwgc2NyaXB0aW5nIGxhbmd1YWdlcy5cIlxuICAgIH1cbiAgICB5aWVsZCB7cmF0aW5nOiAzLCBsZXZlbDogXCJhZHZhbmNlZFwiLCBleHBsYW5hdGlvbjogZXhwbG50fTtcbiAgfSBlbHNlIGlmICgoX2FuYWx5c2VzX3VzZWRbXCIxXCJdIDw9IDIgJiYgX2FuYWx5c2VzX3VzZWRbXCIyXCJdID09IDAgJiYgX2FuYWx5c2VzX3VzZWRbXCIzXCJdID09IDApIHx8IChfYW5hbHlzZXNfdXNlZFtcIjFcIl0gPT09IHVuZGVmaW5lZCAmJiBfYW5hbHlzZXNfdXNlZFtcIjJcIl0gPT09IHVuZGVmaW5lZCAmJiBfYW5hbHlzZXNfdXNlZFtcIjNcIl0gPT09IHVuZGVmaW5lZCkpIHtcbiAgICBleHBsbnQgKz0gXCJZb3UgaGF2ZSBleHBlcmllbmNlIHdpdGggYXQgbW9zdCBzb21lIGJhc2ljIGFuYWx5c2VzLlwiO1xuICAgIHlpZWxkIHtyYXRpbmc6IDEsIGxldmVsOiBcImZ1bmRhbWVudGFsXCIsIGV4cGxhbmF0aW9uOiBleHBsbnR9XG4gIH0gZWxzZSB7XG4gICAgeWllbGQge3JhdGluZzogMiwgbGV2ZWw6IFwiaW50ZXJtZWRpYXRlXCIsIGV4cGxhbmF0aW9uOiBcIllvdSBoYXZlIHNvbWUgZXhwZXJpZW5jZSBpbiBhcHBseWluZyBzdGF0aXN0aWNhbCBhbmFseXNlcy5cIn07XG4gIH1cbn1cblxubXl0YWIgPSB7XG4gIGlmIChpbnRlcmVzdCA9PT0gbnVsbCB8fCBlZHVjYXRpb24gPT09IG51bGwgfHwgZWR1Y2F0aW9uX3doZW4gPT09IG51bGwgfHwgYWxnZWJyYV8xID09PSBudWxsIHx8IGFsZ2VicmFfMiA9PT0gbnVsbCkge1xuICB5aWVsZCBbXVxufSBlbHNlIHtcbiAgeWllbGQgW1xuICAgIHthcmVhOiBcImludGVyZXN0XCIsIGxldmVsOiBfaW50ZXJlc3QsIHJlYXNvbjogXCJcIn0sXG4gICAge2FyZWE6IFwidHJhaW5pbmdcIiwgbGV2ZWw6IF9lZHVjYXRpb24ubGV2ZWwsIHJlYXNvbjogX2VkdWNhdGlvbi5leHBsYW5hdGlvbn0sXG4gICAge2FyZWE6IFwiZXhwZXJpZW5jZVwiLCBsZXZlbDogX2V4cGVyaWVuY2UubGV2ZWwsIHJlYXNvbjogX2V4cGVyaWVuY2UuZXhwbGFuYXRpb259LFxuICAgIHthcmVhOiBcInRlY2huaWNhbFwiLCBsZXZlbDogX2FiaWxpdHkubGV2ZWwsIHJlYXNvbjogX2FiaWxpdHkuZXhwbGFuYXRpb259LFxuICAgIHthcmVhOiBcInByb2dyYW1taW5nXCIsIGxldmVsOiBfcHJvZ3JhbW1pbmcubGV2ZWwsIHJlYXNvbjogX3Byb2dyYW1taW5nLmV4cGxhbmF0aW9ufVxuICBdXG4gIH1cbn1cblxuaHRtbGA8aDI+R3VpZGFuY2U8L2gyPmBcblxudmlld29mIHRhYmxlID0gSW5wdXRzLnRhYmxlKG15dGFiKVxuXG5cbi8vIGNoYXJ0ID0gdmwubWFya0JhcigpIC8vIE1ha2UgYSBiYXIgY2hhcnQgXG4vLyAgIC5kYXRhKFt7bmFtZTogXCJpbnRlcmVzdHNcIiwgdmFsdWU6IF9pbnRlcmVzdH0sXG4vLyAgICAgICAgICB7bmFtZTogXCJhYmlsaXR5XCIsIHZhbHVlOiBfYWJpbGl0eX0sXG4vLyAgICAgICAgICB7bmFtZTogXCJ0cmFpbmluZ1wiLCB2YWx1ZTogX2VkdWNhdGlvbn0sXG4vLyAgICAgICAgICB7bmFtZTogXCJleHBlcmllbmNlXCIsIHZhbHVlOiBfZXhwZXJpZW5jZX1dKVxuLy8gICAuZW5jb2RlKFxuLy8gICAgIHZsLnkoKS5maWVsZE8oXCJuYW1lXCIpLCAgICAgICAgLy8gU2hvdyBsZXR0ZXJzIGluIHNlcXVlbnRpYWwgb3JkZXIgb24gdGhlIHgtYXhpc1xuLy8gICAgIHZsLngoKS5maWVsZFEoXCJ2YWx1ZVwiKSwgLy8uYXhpcyh7IGZvcm1hdDogXCIlXCIgfSksIC8vIFNob3cgZnJlcXVlbmN5IG9uIHRoZSB5LWF4aXMsIGZvcm1hdHRlZCBhcyBwZXJjZW50XG4vLyAgICAgLy8gdmwuY29sb3IoKS52YWx1ZSh5b3VyQ29sb3IpICAgLy8gU2V0IHRoZSBiYXIgY29sb3Jcbi8vICAgKVxuLy8gICAucmVuZGVyKClcblxuYWR2aWNlID0ge1xuICAvLyBzdWJtaXQ7XG4gIGxldCBhZHZpY2Vfc3RyaW5nID0gXCJcIjtcbiAgaWYoaW50ZXJlc3QgPT09IG51bGwgfHwgZWR1Y2F0aW9uID09PSBudWxsIHx8IGVkdWNhdGlvbl93aGVuID09PSBudWxsIHx8IGFsZ2VicmFfMSA9PT0gbnVsbCB8fCBhbGdlYnJhXzIgPT09IG51bGwpIHtcbiAgICBhZHZpY2Vfc3RyaW5nICs9IFwiUGxlYXNlIGFuc3dlciBhbGwgcXVlc3Rpb25zLlwiO1xuICB9IGVsc2Uge1xuICAgIGlmIChpbnRlcmVzdCA9PT0gXCJhZHZhbmNlZFwiKSB7XG4gICAgICBhZHZpY2Vfc3RyaW5nICs9IFwiWW91IGluZGljYXRlIHlvdSBhcmUgaW50ZXJlc3RlZCBpbiB0YWtpbmcgdGhlIEFkdmFuY2VkIG1vZHVsZS4gXCJcbiAgICAvLyBjaGVjayBwcmlvciBlZHVjYXRpb24gXG4gICAgICBpZihfZWR1Y2F0aW9uLmxldmVsID09PSBcImFkdmFuY2VkXCIgJiYgX2FiaWxpdHkubGV2ZWwgPT09IFwiYWR2YW5jZWRcIiAmJiBfZXhwZXJpZW5jZS5sZXZlbCA9PT0gXCJhZHZhbmNlZFwiICYmIF9wcm9ncmFtbWluZy5yYXRpbmcgPj0gMikge1xuICAgICAgLy8gcGVyZmVjdCBzY29yZVxuICAgICAgICBhZHZpY2Vfc3RyaW5nICs9IFwiQmFzZWQgb24geW91ciBzdGF0ZWQgcHJpb3IgZWR1Y2F0aW9uIGFuZCBleHBlcmllbmNlIHdpdGggc3RhdGlzdGljYWwgYW5hbHlzZXMsIGFzIHdlbGwgYXMgeW91ciAoc3ViamVjdGl2ZSkgdGVjaG5pY2FsIGFuZCBwcm9ncmFtbWluZyBhYmlsaXR5LCB3ZSBiZWxpZXZlIHRoaXMgaXMgbGlrZWx5IHRoZSByaWdodCBjaG9pY2UgZm9yIHlvdS4gQXMgc3VjaCwgdGhlIGFkdmljZSBpcyB0byB0YWtlIHRoZSBBZHZhbmNlZCBtb2R1bGUuXCJcbiAgICAgIH0gZWxzZSBpZiAoX2VkdWNhdGlvbi5yYXRpbmcgPj0gMSAmJiBfYWJpbGl0eS5yYXRpbmcgPT09IDMgJiYgX2V4cGVyaWVuY2UucmF0aW5nID09PSAzICYmIF9wcm9ncmFtbWluZy5yYXRpbmcgPT09IDMpIHtcbiAgICAgICAgYWR2aWNlX3N0cmluZyArPSBcIldoaWxzdCB5b3VyIHN0YXRlZCBwcmlvciBlZHVjYXRpb24gaXMgbW9yZSBzdWl0YWJsZSBmb3IgdGhlIEludGVybWVkaWF0ZSBtb2R1bGUsIHlvdXIgc3RhdGVkIGV4cGVyaWVuY2Ugd2l0aCBzdGF0aXN0aWNhbCBhbmFseXNlcyBhbmQgeW91ciAoc3ViamVjdGl2ZSkgdGVjaG5pY2FsIGFuZCBwcm9ncmFtbWluZyBhYmlsaXR5IGluZGljYXRlIHlvdSBtYXkgYmUgcmVhZHkgdG8gdGFrZSB0aGUgQWR2YW5jZWQgbW9kdWxlLiBBcyBzdWNoLCB0aGUgYWR2aWNlIGlzIHRvIGNvbnNpZGVyIHRha2luZyB0aGUgQWR2YW5jZWQgbW9kdWxlLCBhbHRob3VnaCB0aGUgSW50ZXJtZWRpYXRlIG1vZHVsZSBtaWdodCBiZSBtb3JlIHN1aXRhYmxlIHRvIHlvdS5cIlxuICAgICAgfSBlbHNlIGlmKF9lZHVjYXRpb24ucmF0aW5nID09PSAzICYmIF9hYmlsaXR5LnJhdGluZyA9PT0gMyAmJiBfZXhwZXJpZW5jZS5yYXRpbmcgPj0gMSAmJiBfcHJvZ3JhbW1pbmcucmF0aW5nID09PSAzICYmIF9zb2Z0d2FyZV91c2VkW1wiUlwiXSA9PT0gMSkge1xuICAgICAgICBhZHZpY2Vfc3RyaW5nICs9IFwiWW91IHNlZW0gdG8gaGF2ZSBleHBlcmllbmNlIG1vc3RseSB3aXRoIHRoZSBtb3JlIGJhc2ljIHN0YXRpc2ljYWwgYW5hbHlzZXMuIEhvd2V2ZXIsIHlvdXIgc3RhdGVkIHByaW9yIGVkdWNhdGlvbiBhbmQgKHN1YmplY3RpdmUpIHRlY2huaWNhbCBhbmQgcHJvZ3JhbW1pbmcgYWJpbGl0eSwgYXMgd2VsbCBhc3cgeW91ciBleHBlcmllbmNlIHdpdGggUiwgaW5kaWNhdGUgeW91IG1heSBiZSByZWFkeSB0byB0YWtlIHRoZSBBZHZhbmNlZCBtb2R1bGUuIEFzIHN1Y2gsIHRoZSBhZHZpY2UgaXMgdG8gY29uc2lkZXIgdGFraW5nIHRoZSBBZHZhbmNlZCBtb2R1bGUsIGFsdGhvdWdoIHRoZSBJbnRlcm1lZGlhdGUgbW9kdWxlIG1pZ2h0IGJlIG1vcmUgc3VpdGFibGUgdG8geW91LlwiXG4gICAgICB9IGVsc2UgaWYoX2VkdWNhdGlvbi5yYXRpbmcgPj0gMiAmJiBfYWJpbGl0eS5yYXRpbmcgPT09IDMgJiYgX2V4cGVyaWVuY2UucmF0aW5nID49IDEgJiYgX3Byb2dyYW1taW5nLnJhdGluZyA9PT0gMykge1xuICAgICAgICBhZHZpY2Vfc3RyaW5nICs9IFwiWW91IHNlZW0gdG8gaGF2ZSBleHBlcmllbmNlIG1vc3RseSB3aXRoIHRoZSBtb3JlIGJhc2ljIHN0YXRpc2ljYWwgYW5hbHlzZXMuIEhvd2V2ZXIsIHlvdXIgc3RhdGVkIHByaW9yIGVkdWNhdGlvbiBhbmQgKHN1YmplY3RpdmUpIHRlY2huaWNhbCBhbmQgcHJvZ3JhbW1pbmcgYWJpbGl0eSBpbmRpY2F0ZSB5b3UgYXJlIGxpa2VseSByZWFkeSB0byB0YWtlIHRoZSBBZHZhbmNlZCBtb2R1bGUuIEFzIHN1Y2gsIHRoZSBhZHZpY2UgaXMgdG8gY29uc2lkZXIgdGFraW5nIHRoZSBBZHZhbmNlZCBtb2R1bGUsIGFsdGhvdWdoIHRoZSBJbnRlcm1lZGlhdGUgbW9kdWxlIG1pZ2h0IGJlIG1vcmUgc3VpdGFibGUgdG8geW91LlwiXG4gICAgICB9IGVsc2UgaWYgKF9hYmlsaXR5LnJhdGluZyA9PT0gMyAmJiBfZWR1Y2F0aW9uLnJhdGluZyA+PSAxICYmIF9leHBlcmllbmNlLnJhdGluZyA+PSAxICYmIF9wcm9ncmFtbWluZy5yYXRpbmcgPT09IDMpIHtcbiAgICAgICAgYWR2aWNlX3N0cmluZyArPSBcIllvdXIgcHJpb3Igc3RhdGlzdGljcyBlZHVjYXRpb24gYW5kIGV4cGVyaWVuY2UgaXMgbW9yZSBzdWl0YWJsZSB0byB0aGUgSW50ZXJtZWRpYXRlIG1vZHVsZS4gSG93ZXZlciwgeW91ciAoc3ViamVjdGl2ZSkgdGVjaG5pY2FsIGFuZCBwcm9ncmFtbWluZyBhYmlsaXR5IGluZGljYXRlIHlvdSBjb3VsZCBiZSByZWFkeSB0byB0YWtlIHRoZSBBZHZhbmNlZCBtb2R1bGUuIEFzIHN1Y2gsIHRoZSBhZHZpY2UgaXMgdGFrZSB0aGUgSW50ZXJtZWRpYXRlIG1vZHVsZSwgYnV0IHlvdSBjYW4gY29uc2lkZXIgdGFraW5nIHRoZSBBZHZhbmNlZCBtb2R1bGUgaWYgeW91IGZlZWwgY29uZmlkZW50IHlvdSBjYW4gcXVpY2tseSBncmFzcCB0aGUgc3RhdGlzdGljYWwgY29uY2VwdHMuXCJcbiAgICAgIH0gZWxzZSBpZiAoX2VkdWNhdGlvbi5yYXRpbmcgPT09IDMgJiYgX2V4cGVyaWVuY2UucmF0aW5nID09PSAzICYmIF9wcm9ncmFtbWluZy5yYXRpbmcgPCAzICYmIF9hYmlsaXR5LnJhdGluZyA8IDMpIHtcbiAgICAgICAgYWR2aWNlX3N0cmluZyArPSBcIkhvd2V2ZXIsIHlvdXIgKHN1YmplY3RpdmUpIHRlY2huaWNhbCBhbmQgcHJvZ3JhbW1pbmcgYWJpbGl0eSBpbmRpY2F0ZXMgdGhlIEFkdmFuY2VkIG1vZHVsZSBtYXkgbm90IGJlIHN1aXRhYmxlIGZvciB5b3UuIFRoYXQgc2FpZCwgeW91ciBzdGF0ZWQgcHJpb3IgZWR1Y2F0aW9uIGFuZCBleHBlcmllbmNlIHdpdGggc3RhdGlzdGljYWwgYW5hbHlzZXMgaW5kaWNhdGUgeW91IGNvdWxkIGJlIHJlYWR5IHRvIHRha2UgdGhlIEFkdmFuY2VkIG1vZHVsZS4gT3VyIGFkdmljZSBpcyB0byB0YWtlIHRoZSBJbnRlcm1lZGlhdGUgbW9kdWxlLCBhbHRob3VnaCB5b3UgY291bGQgY29uc2lkZXIgdGFraW5nIHRoZSBBZHZhbmNlZCBtb2R1bGUgaWYgeW91IGFyZSB3aWxsaW5nIHRvIHB1dCBpbiBhZGRpdGlvbmFsIGVmZm9ydCB0byBpbXByb3ZlIHlvdXIgdGVjaG5pY2FsIGFuZCBwcm9ncmFtbWluZyBhYmlsaXR5LlwiXG4gICAgICB9IGVsc2UgaWYgKF9lZHVjYXRpb24ucmF0aW5nID09PSAyICYmIF9leHBlcmllbmNlLnJhdGluZyA9PT0gMyAmJiBfcHJvZ3JhbW1pbmcucmF0aW5nIDwgMyAmJiBfYWJpbGl0eS5yYXRpbmcgPCAzKSB7XG4gICAgICAgIGFkdmljZV9zdHJpbmcgKz0gXCJIb3dldmVyLCB5b3VyIChzdWJqZWN0aXZlKSB0ZWNobmljYWwgYW5kIHByb2dyYW1taW5nIGFiaWxpdHkgaW5kaWNhdGVzIHRoZSBBZHZhbmNlZCBtb2R1bGUgbWF5IG5vdCBiZSBzdWl0YWJsZSB0byB5b3UuIE5ldmVydGhlbGVzcywgeW91ciBzdGF0ZWQgcHJpb3IgZWR1Y2F0aW9uIGFuZCBleHBlcmllbmNlIHdpdGggc3RhdGlzdGljYWwgYW5hbHlzZXMgaW5kaWNhdGUgeW91IGNvdWxkIGJlIHJlYWR5IHRvIHRha2UgdGhlIEFkdmFuY2VkIG1vZHVsZS4gT3VyIGFkdmljZSBpcyB0byB0YWtlIHRoZSBJbnRlcm1lZGlhdGUgbW9kdWxlLCBhbHRob3VnaCB5b3UgY291bGQgY29uc2lkZXIgdGFraW5nIHRoZSBBZHZhbmNlZCBtb2R1bGUgaWYgeW91IGFyZSB3aWxsaW5nIHRvIHB1dCBpbiBhZGRpdGlvbmFsIGVmZm9ydCB0byBpbXByb3ZlIHlvdXIgdGVjaG5pY2FsIGFuZCBwcm9ncmFtbWluZyBhYmlsaXR5LlwiXG4gICAgICB9IGVsc2UgaWYgKGRlZmF1bHRfbW9kdWxlID09PSBcImludGVybWVkaWF0ZVwiKSB7XG4gICAgICAgIGFkdmljZV9zdHJpbmcgKz0gXCJIb3dldmVyLCB5b3VyIGFuc3dlcnMgaW5kaWNhdGUgdGhhdCB0aGlzIGlzIGxpa2VseSBub3QgdGhlIGJlc3QgY2hvaWNlIGZvciB5b3UuIEFzIHN1Y2gsIG91ciByZWNvbW1lbmRhdGlvbiBpcyB0byB0YWtlIHRoZSBJbnRlcm1lZGlhdGUgbW9kdWxlLlwiIFxuICAgICAgfSBlbHNlIHtcbiAgICAgICAgYWR2aWNlX3N0cmluZyArPSBcIkhvd2V2ZXIsIHlvdXIgYW5zd2VycyBpbmRpY2F0ZSB0aGF0IHRoaXMgaXMgbGlrZWx5IG5vdCB0aGUgYmVzdCBjaG9pY2UgZm9yIHlvdS4gQXMgc3VjaCwgb3VyIHJlY29tbWVuZGF0aW9uIGlzIHRvIHRha2UgdGhlIEludGVybWVkaWF0ZSBvciBGdW5kYW1lbnRhbCBtb2R1bGUuXCIgXG4gICAgICB9XG4gICAgfSBlbHNlIGlmIChfaW50ZXJlc3QgPT09IFwiaW50ZXJtZWRpYXRlXCIpIHtcbiAgICBhZHZpY2Vfc3RyaW5nICs9IFwiWW91IGluZGljYXRlIHlvdSBhcmUgaW50ZXJlc3RlZCBpbiB0YWtpbmcgdGhlIEludGVybWVkaWF0ZSBtb2R1bGUuIFwiXG4gICAgaWYoX2VkdWNhdGlvbi5yYXRpbmcgPT09IDMgJiYgX2FiaWxpdHkucmF0aW5nID09PSAzICYmIF9leHBlcmllbmNlLnJhdGluZyA9PT0gMyAmJiBfcHJvZ3JhbW1pbmcucmF0aW5nID09PSAzKSB7XG4gICAgICBhZHZpY2Vfc3RyaW5nICs9IFwiWW91ciBwcmlvciBzdGF0aXN0aWNzIGVkdWNhdGlvbiBhbmQgZXhwZXJpZW5jZSwgYXMgd2VsbCBhcyB5b3VyIChzdWJqZWN0aXZlKSB0ZWNobmljYWwgYW5kIHByb2dyYW1taW5nIGFiaWxpdHksIGluZGljYXRlIHRoYXQgdGhlIEFkdmFuY2VkIG1vZHVsZSBtYXkgYWxzbyBiZSB0aGUgcmlnaHQgY2hvaWNlIGZvciB5b3UuIE91ciBhZHZpc2UgaXMgdGhlcmVmb3JlIHRvIHRha2UgdGhlIEludGVybWVkaWF0ZSBtb2R1bGUsIGFsdGhvdWdoIHlvdSBjb3VsZCBjb25zaWRlciB0aGUgQWR2YW5jZWQgbW9kdWxlIGFzIHdlbGwuXCJcbiAgICAgIH0gZWxzZSBpZihfZWR1Y2F0aW9uLnJhdGluZyA+PSAxICYmIF9hYmlsaXR5LnJhdGluZyA+PSAyICYmIF9leHBlcmllbmNlLnJhdGluZyA+PSAxICYmIF9wcm9ncmFtbWluZy5yYXRpbmcgPj0gMikge1xuICAgICAgLy8gcGVyZmVjdCBzY29yZVxuICAgICAgICBhZHZpY2Vfc3RyaW5nICs9IFwiQmFzZWQgb24geW91ciBzdGF0ZWQgcHJpb3IgZWR1Y2F0aW9uIGFuZCBleHBlcmllbmNlIHdpdGggc3RhdGlzdGljYWwgYW5hbHlzZXMsIGFzIHdlbGwgYXMgeW91ciAoc3ViamVjdGl2ZSkgdGVjaG5pY2FsIGFuZCBwcm9ncmFtbWluZyBhYmlsaXR5LCB3ZSBiZWxpZXZlIHRoaXMgaXMgbGlrZWx5IHRoZSByaWdodCBjaG9pY2UgZm9yIHlvdS4gQXMgc3VjaCwgdGhlIGFkdmljZSBpcyB0byB0YWtlIHRoZSBJbnRlcm1lZGlhdGUgbW9kdWxlLlwiXG4gICAgICB9IGVsc2UgaWYoIF9hYmlsaXR5LnJhdGluZyA9PT0gMSAmJiBfcHJvZ3JhbW1pbmcuYWJpbGl0eSA9PT0gMSAmJiBkZWZhdWx0X21vZHVsZSA9PT0gXCJmdW5kYW1lbnRhbFwiKSB7XG4gICAgICAgIGFkdmljZV9zdHJpbmcgKz0gXCJIb3dldmVyLCB5b3VyIChzdWJqZWN0aXZlKSB0ZWNobmljYWwgYW5kIHByb2dyYW1taW5nIGFiaWxpdHkgaW5kaWNhdGVzIHRoYXQgeW91IG1heSBzdHJ1Z2dsZSB3aXRoIHNvbWUgb2YgdGhlIGFzcGVjdHMgb2YgdGhpcyBtb2R1bGUuIEFzIHN1Y2gsIHRoZSBhZHZpY2UgaXMgdG8gdGFrZSB0aGUgRnVuZGFtZW50YWwgbW9kdWxlLiBZb3UgY2FuIGNvbnNpZGVyIHRoZSBJbnRlcm1lZGlhdGUgbW9kdWxlLCBidXQgeW91IHNob3VsZCByZWFsaXNlIHRoYXQgbGVhcm5pbmcgdG8gcHJvZ3JhbSBpbiBSIG1heSBiZSBkaWZmaWN1bHQgYW5kIHJlcXVpcmUgYWRkaXRpb25hbCBlZmZvcnQuXCJcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIGFkdmljZV9zdHJpbmcgKz0gXCJIb3dldmVyLCB5b3VyIChzdWJqZWN0aXZlKSB0ZWNobmljYWwgYW5kIHByb2dyYW1taW5nIGFiaWxpdHkgaW5kaWNhdGVzIHRoYXQgeW91IG1heSBzdHJ1Z2dsZSB3aXRoIHNvbWUgb2YgdGhlIGFzcGVjdHMgb2YgdGhpcyBtb2R1bGUuXCJcbiAgICAgIH1cbiAgICB9IGVsc2UgaWYoX2ludGVyZXN0ID09PSBcImZ1bmRhbWVudGFsXCIgJiYgZGVmYXVsdF9tb2R1bGUgIT09IFwiZnVuZGFtZW50YWxcIikge1xuICAgICAgYWR2aWNlX3N0cmluZyArPSBcIllvdSBpbmRpY2F0ZSB5b3UgYXJlIGludGVyZXN0ZWQgaW4gdGFraW5nIHRoZSBGdW5kYW1lbnRhbCBtb2R1bGUuIEhvd2V2ZXIsIHRoZSBkZWZhdWx0IG1vZHVsZSBvZiB5b3VyIHByb2dyYW1tZSBpcyBzZXQgYXQgYSBoaWdoZXIgbGV2ZWwsIGFuZCB5b3UgY2FuIG5vdCBzd2l0Y2ggdG8gdGhlIEZ1bmRhbWVudGFsIG1vZHVsZS5cIlxuICAgIH0gZWxzZSBpZihfaW50ZXJlc3QgPT09IFwiZnVuZGFtZW50YWxcIikge1xuICAgICAgYWR2aWNlX3N0cmluZyArPSBcIllvdSBpbmRpY2F0ZSB5b3UgYXJlIGludGVyZXN0ZWQgaW4gdGFraW5nIHRoZSBGdW5kYW1lbnRhbCBtb2R1bGUuXCJcbiAgICAgIGlmKF9lZHVjYXRpb24ucmF0aW5nID09PSAzICYmIF9hYmlsaXR5LnJhdGluZyA9PT0gMyAmJiBfZXhwZXJpZW5jZS5yYXRpbmcgPT09IDMgJiYgX3Byb2dyYW1taW5nLnJhdGluZyA9PT0gMykge1xuICAgICAgICBhZHZpY2Vfc3RyaW5nICs9IFwiIFlvdXIgc3RhdGVkIHByaW9yIGVkdWNhdGlvbiBhbmQgZXhwZXJpZW5jZSB3aXRoIHN0YXRpc3RpY2FsIGFuYWx5c2VzLCBhcyB3ZWxsIGFzIHlvdXIgKHN1YmplY3RpdmUpIHRlY2huaWNhbCBhbmQgcHJvZ3JhbW1pbmcgYWJpbGl0eSwgaW5kaWNhdGUgdGhhdCB0aGUgQWR2YW5jZWQgbW9kdWxlIG1heSBhbHNvIGJlIHRoZSByaWdodCBjaG9pY2UgZm9yIHlvdS4gT3VyIGFkdmlzZSBpcyB0aGVyZWZvcmUgdG8gdGFrZSB0aGUgRnVuZGFtZW50YWwgbW9kdWxlLCBhbHRob3VnaCB5b3UgbWF5IGNvbnNpZGVyIHRoZSBBZHZhbmNlZCBtb2R1bGUuIFwiXG4gICAgICB9IGVsc2UgaWYoZWR1Y2F0aW9uID49IDIgJiYgZWR1Y2F0aW9uX3doZW4gPiAxICYmIF9wcm9ncmFtbWluZy5yYXRpbmcgPj0gMikge1xuICAgICAgICBhZHZpY2Vfc3RyaW5nICs9IFwiIEFzIHlvdSBpbmRpY2F0ZSByZWxldmFudCBhbmQgKGF0IGxlYXN0IHNvbWV3aGF0KSByZWNlbnQgcHJpb3Igc3RhdGlzdGljcyBlZHVjYXRpb24sIGFzIHdlbGwgYXMgc29tZSBwcm9ncmFtbWluZy9jb2RpbmcgYWJpbGl0eSwgeW91IGNvdWxkIGFsc28gY29uc2lkZXIgdGFraW5nIHRoZSBJbnRlcm1lZGlhdGUgbW9kdWxlLlwiXG4gICAgICB9IGVsc2Uge1xuICAgICAgICBhZHZpY2Vfc3RyaW5nICs9IFwiIEFzIHRoaXMgaXMgdGhlIGRlZmF1bHQgbW9kdWxlIGluIHlvdXIgcHJvZ3JhbW1lLCB3ZSByZWNvbW1lbmQgeW91IHN0aWNrIHRvIHRoZSBGdW5kYW1lbnRhbCBtb2R1bGUuXCJcbiAgICAgIH1cbiAgICB9XG4gIH1cbiAgeWllbGQgYWR2aWNlX3N0cmluZztcbn1cbmh0bWxgPHA+PC9wPjxwPiR7YWR2aWNlfTwvcD5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEzIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG5pbXBvcnQge2J1dHRvbn0gZnJvbSBcIkBqZXJlbWlhay9kb3dubG9hZC1kYXRhLWJ1dHRvblwiXG5cbmFuYWx5c2VzX2xlYXJuZWRfdGV4dCA9IGFuYWx5c2VzX2xlYXJuZWQubWFwKGZ1bmN0aW9uKHgpe3JldHVybiB4LmxhYmVsfSkuam9pbihcIixcIik7XG5hbmFseXNlc191c2VkX3RleHQgPSBhbmFseXNlc191c2VkLm1hcChmdW5jdGlvbih4KXtyZXR1cm4geC5sYWJlbH0pLmpvaW4oXCIsXCIpO1xuc29mdHdhcmVfdXNlZF90ZXh0ID0gc29mdHdhcmVfdXNlZC5tYXAoZnVuY3Rpb24oeCl7cmV0dXJuIHgubGFiZWx9KS5qb2luKFwiLFwiKTtcbmVkdWNhdGlvbl90ZXh0ID0geyBpZihlZHVjYXRpb24gIT0gbnVsbCkge3lpZWxkIGVkdWNhdGlvbi5sYWJlbH0gZWxzZSB7eWllbGQgXCJcIn19XG5lZHVjYXRpb25fd2hlbl90ZXh0ID0ge2lmKGVkdWNhdGlvbl93aGVuICE9IG51bGwpIHt5aWVsZCBlZHVjYXRpb25fd2hlbi5sYWJlbH0gZWxzZSB7eWllbGQgXCJcIn19XG5cblxuc2F2ZV9kYXRhID0ge1xuICBpZihteXRhYi5sZW5ndGggPiAxKSB7eWllbGQgW1xuICB7YWR2aWNlOiBhZHZpY2V9LFxuICB7ZG9tYWluOiBcInRyYWluaW5nXCIsIGxldmVsOiBteXRhYlsxXS5sZXZlbCwgcmVhc29uOiBteXRhYlsxXS5yZWFzb259LFxuICB7ZG9tYWluOiBcImV4cGVyaWVuY2VcIiwgbGV2ZWw6IG15dGFiWzJdLmxldmVsLCByZWFzb246IG15dGFiWzJdLnJlYXNvbn0sXG4gIHtkb21haW46IFwidGVjaG5pY2FsXCIsIGxldmVsOiBteXRhYlszXS5sZXZlbCwgcmVhc29uOiBteXRhYlszXS5yZWFzb259LFxuICB7ZG9tYWluOiBcInByb2dyYW1taW5nXCIsIGxldmVsOiBteXRhYls0XS5sZXZlbCwgcmVhc29uOiBteXRhYls0XS5yZWFzb259LFxuICB7cXVlc3Rpb246IFwiRGVmYXVsdCBtb2R1bGVcIiwgdmFsdWU6IGRlZmF1bHRfbW9kdWxlfSxcbiAge3F1ZXN0aW9uOiBcIkludGVyZXN0ZWQgaW5cIiwgdmFsdWU6IGludGVyZXN0fSxcbiAge3F1ZXN0aW9uOiBcIlRlY2huaWNhbCBhYmlsaXR5XCIsIHZhbHVlOiBzZWxmX3JhdGluZ30sXG4gIHtxdWVzdGlvbjogXCJQcm9ncmFtbWluZyBhYmlsaXR5XCIsIHZhbHVlOiBzZWxmX3JhdGluZ19jb2Rpbmd9LFxuICB7cXVlc3Rpb246IFwiUHJpb3IgZWR1Y2F0aW9uXCIsIHZhbHVlOiBlZHVjYXRpb25fdGV4dH0sXG4gIHtxdWVzdGlvbjogXCJQcmlvciBlZHVjYXRpb24gd2hlblwiLCB2YWx1ZTogZWR1Y2F0aW9uX3doZW5fdGV4dH0sXG4gIHtxdWVzdGlvbjogXCJBbmFseXNlcyBsZWFybmVkXCIsIHZhbHVlOiBhbmFseXNlc19sZWFybmVkX3RleHR9LFxuICB7cXVlc3Rpb246IFwiQW5hbHlzZXMgdXNlZFwiLCB2YWx1ZTogYW5hbHlzZXNfdXNlZF90ZXh0fSxcbiAge3F1ZXN0aW9uOiBcIlNvZnR3YXJlIHVzZWRcIiwgdmFsdWU6IHNvZnR3YXJlX3VzZWRfdGV4dH0sXG4gIHtxdWVzdGlvbjogXCJBbGdlYnJhIDFcIiwgdmFsdWU6IGFsZ2VicmFfMX0sXG4gIHtxdWVzdGlvbjogXCJBbGdlYnJhIDJcIiwgdmFsdWU6IGFsZ2VicmFfMn1cbl19IGVsc2Uge1xuICB5aWVsZCBbe31dO1xufVxufVxuYnV0dG9uKHNhdmVfZGF0YSwgXCJtb2R1bGVfZ3VpZGFuY2UuY3N2XCIpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2RlZmF1bHRfbW9kdWxlJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2ludGVyZXN0JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NlbGZfcmF0aW5nJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NlbGZfcmF0aW5nX2NvZGluZycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdlZHVjYXRpb24nKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZWR1Y2F0aW9uX3doZW4nKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYW5hbHlzZXNfbGVhcm5lZCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdhbmFseXNlc191c2VkJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3NvZnR3YXJlX3VzZWQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYWxnZWJyYV8xJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2FsZ2VicmFfMicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0YWJsZScpIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -838,10 +874,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -851,8 +904,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -864,7 +926,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -908,6 +1093,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -933,6 +1119,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -993,6 +1205,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
